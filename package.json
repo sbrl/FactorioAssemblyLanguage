@@ -1,0 +1,31 @@
+{
+  "name": "falc",
+  "version": "1.0.0",
+  "description": "Factorio Assembly Language compiler",
+  "main": "src/index.mjs",
+  "scripts": {
+    "test": "echo \"No tests implemented yet\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbrl/FactorioAssemblyLanguage.git"
+  },
+  "keywords": [
+    "compiler",
+    "factorio",
+    "assembly"
+  ],
+  "author": "Starbeamrainbowlabs",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/sbrl/FactorioAssemblyLanguage/issues"
+  },
+  "homepage": "https://github.com/sbrl/FactorioAssemblyLanguage#readme",
+  "dependencies": {
+    "applause-cli": "^1.8.2",
+    "factorio-blueprint": "^2.5.0"
+  },
+  "devDependencies": {
+    "nearley": "^2.20.1"
+  }
+}
