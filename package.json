@@ -4,7 +4,8 @@
   "description": "Factorio Assembly Language compiler",
   "main": "src/index.mjs",
   "scripts": {
-    "test": "echo \"No tests implemented yet\""
+    "test": "echo \"No tests have been implemented yet\"",
+	"compile": "node_modules/.bin/nearleyc -o src/lib/falc/FactorioAssemblyLanguage.cjs src/lib/falc/FactorioAssemblyLanguage.ne"
   },
   "repository": {
     "type": "git",
