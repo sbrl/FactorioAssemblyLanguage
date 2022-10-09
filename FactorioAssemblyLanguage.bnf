@@ -5,10 +5,10 @@
 <program> ::= <statement_list>
 
 <statement_list> ::= <statement>
-	| <statement> <statement_list>
+	| <statement> <ws> <statement_list>
 	
 
-<statement> ::= <instruction> <ws>
+<statement> ::= <instruction>
 	| <comment_single>
 	| <comment_multi>
 
@@ -41,8 +41,8 @@
 # Instructions
 ###
 
-<i_hwconst>	::= HWCONST	<ws> <name>		<ws> <number>
-<i_const>	::= CONST	<ws> <name>		<ws> <number>
+<i_hwconst>	::= HWCONST	<ws> <name>		<ws> <integer>
+<i_const>	::= CONST	<ws> <name>		<ws> <integer>
 <i_store>	::= STORE	<ws> <val_int>	<ws> <register>
 <i_add>		::= ADD		<ws> <val_int>	<ws> <val_int>	<ws> <register>
 <i_sub>		::= SUB		<ws> <val_int>	<ws> <val_int>	<ws> <register>
