@@ -72,15 +72,14 @@ instruction -> i_hwconst {% id %}
 
 i_hwconst	-> "HWCONST"	_ name	_ integer
 	{% (data) => {
-		data[2].type = `SYMBOL_HWCONST`; // was NAME, ref the lexer
+		data[2].type = `HWCONST`; // was NAME, ref the lexer
 		symbol_table_add(data[2]);
 		return process_args(data);
 	} %}
 i_const		-> "CONST"		_ name	_ integer
 	{% (data) => {
-		data[2].type = `SYMBOL_HWCONST`; // was NAME, ref the lexer
+		data[2].type = `CONST`; // was NAME, ref the lexer
 		symbol_table_add(data[2]);
-		console.log(`DEBUG:CONST data AFTER`, data);
 		return process_args(data);
 	} %}
 i_store		-> "STORE"	_ val_int	_ register
