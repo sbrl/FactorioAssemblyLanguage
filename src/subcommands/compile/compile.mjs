@@ -2,6 +2,8 @@
 
 import { Readable } from 'stream';
 import fs from 'fs';
+import util from 'util';
+
 import streams_concat from '../../lib/async/streams_concat.mjs';
 
 import FALCompiler from '../../lib/falc/FALCompiler.mjs';
@@ -21,5 +23,10 @@ export default async function(args) {
 	const compiler = new FALCompiler();
 	
 	const result = await compiler.compile(await streams_concat(source_streams, `\n\n\n`));
-	console.log(result);
+	console.log(util.inspect(result, {
+		depth: 10,
+		colors: true,
+		compact: 10,
+		breakLength: 200
+	}));
 }
