@@ -27,7 +27,7 @@
 		if(!symbol_table.has(tok_name.value)) {
 			throw new Error(`Error: Undefined symbol ${tok_name.value} on line ${tok_name.line} col ${tok_name.col}`);
 		}
-		tok_name.type = symbol_table.get(tok_name.value).type;
+		tok_name.sym = symbol_table.get(tok_name.value);
 	}
 	
 	function process_args(data) {
