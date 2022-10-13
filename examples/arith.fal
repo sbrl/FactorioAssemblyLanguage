@@ -1,0 +1,9 @@
+// Simple arithmetic test
+
+CONST VAL_A 45
+
+ADD VAL_A 67 R1
+
+DIV R1 2 R1
+
+MEMSET R1 #0
