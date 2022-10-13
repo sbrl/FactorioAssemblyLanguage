@@ -21,19 +21,19 @@ async function load_subcommands(cli) {
 }
 
 export default async function () {
-	let settings = (await import("./settings.mjs")).default;
 	let cli = new CliParser(path.resolve(__dirname, "../package.json"));
 	cli.argument("verbose", "Enable verbose debugging output", null, "boolean")
 		.argument("log-level", "Set the logging level (possible values: debug, info [default], log, warn, error, none)", "info", "string");
 	
 	await load_subcommands(cli);
 	
-	settings.cli = cli.parse(process.argv.slice(2));
+	const args = cli.parse(process.argv.slice(2));
+	args.extras = cli.extras;
 	
 	if(cli.current_subcommand == null)
-		cli.write_help_exit();
+		cli.current_subcommand = "compile";
 	
-	log_core.level = LOG_LEVELS[settings.cli.log_level.toUpperCase()];
+	log_core.level = LOG_LEVELS[args.log_level.toUpperCase()];
 	
 	let subcommand_file = path.join(
 		__dirname,
