@@ -21,13 +21,19 @@ async function load_subcommands(cli) {
 }
 
 export default async function () {
+	const subcommands = [ "compile" ]; // TODO: Populate this with a readdir as above
 	let cli = new CliParser(path.resolve(__dirname, "../package.json"));
 	cli.argument("verbose", "Enable verbose debugging output", null, "boolean")
 		.argument("log-level", "Set the logging level (possible values: debug, info [default], log, warn, error, none)", "info", "string");
 	
 	await load_subcommands(cli);
 	
-	const args = cli.parse(process.argv.slice(2));
+	// Default to the compile subcommand
+	let args_raw = process.argv.slice(2);
+	if(subcommands.indexOf(args_raw.filter(part => !part.startsWith("-"))[0]) == -1)
+		args_raw.unshift("compile");
+	
+	const args = cli.parse(args_raw);
 	args.extras = cli.extras;
 	
 	if(cli.current_subcommand == null)
@@ -49,11 +55,11 @@ export default async function () {
 	
 	
 	try {
-		await (await import(subcommand_file)).default();
+		await (await import(subcommand_file)).default(args);
 	}
 	catch(error) {
 		console.error();
-		if(settings.cli.verbose)
+		if(args.verbose)
 			throw error;
 		else
 			console.error(`${a.fred}${a.hicol}${error.message}${a.reset}`);
