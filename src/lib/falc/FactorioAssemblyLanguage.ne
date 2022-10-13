@@ -7,7 +7,7 @@
 		WS: { match: /\s+/, lineBreaks: true },
 		REG_GENERAL: /R[1-4]/,
 		REG_EXTDEV: /E[A-H]/,
-		NAME: /[a-zA-Z][a-zA-Z0-9]*/,
+		NAME: /[a-zA-Z_][a-zA-Z0-9_]*/,
 		NUMBER: /[0-9]+/,
 		DASH: /-/,
 		HASH: /#/,
