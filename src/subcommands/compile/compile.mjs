@@ -22,11 +22,14 @@ export default async function(args) {
 	});
 	const compiler = new FALCompiler();
 	
-	const result = await compiler.compile(await streams_concat(source_streams, `\n\n\n`));
-	console.log(util.inspect(result, {
+	const tree = await compiler.parse(await streams_concat(source_streams, `\n\n\n`));
+	console.error(util.inspect(tree, {
 		depth: 10,
 		colors: true,
 		compact: 10,
 		breakLength: 200
 	}));
+	const blueprint = compiler.make_blueprint(tree);
+	
+	console.log(blueprint);
 }
